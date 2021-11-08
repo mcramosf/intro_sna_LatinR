@@ -1,0 +1,340 @@
+---
+title: "Introducción al Anális de R-edes"
+output: html_notebook
+editor_options: 
+  chunk_output_type: console
+---
+
+1. Carga de paquetes 
+
+```{r }
+#install.packages("igraph")
+#install.packages("igraphdata")
+
+# Para análisis de redes 
+library(igraph)
+
+# Para obtener los datos
+library(igraphdata)
+
+```
+
+2. Carga de datos
+
+```{r}
+
+# Cargando el dataset del club de karate
+
+
+# Inspección de la clase de objeto 
+
+
+```
+
+3. Configuración de márgenes
+
+``` {r}
+
+# sin márgenes
+
+
+```
+
+4. Primera gráfica de la red
+
+```{r}
+
+# Configurando los márgenes
+
+
+# Gráfica básica
+
+
+# Gráfica más pulida
+plot(karate, 
+     vertex.color = "#4c4ef4",
+     vertex.frame.color= "#4c4ef4",
+     vertex.label.family = "Helvetica", 
+     vertex.label.cex = 0.5,
+     vertex.label.color = "white")
+```
+
+5. Inspección general de la red
+
+```{r}
+
+# Inspección general
+
+
+```
+
+6. Inspección de atributos de la red
+
+```{r}
+
+# Listado de todos los atributos de la red
+
+
+# Acceso al atributo de referencia
+
+
+```
+
+7. Inspección de vértices
+
+```{r}
+
+# Conjunto de vértices
+
+
+# Listado de atributos de los vértices 
+
+
+# Acceso al atributo de nombres
+
+
+# Otra forma de acceder al atributo de nombres
+
+
+# Acceso a los cinco primeros vértices y sus 
+# atributos
+
+
+```
+
+8. Inspección de vínculos 
+
+```{r}
+
+# Conjunto de vínculos 
+
+
+# Acceso a todos los vínculos
+
+
+# Listado de atributos de los vínculos 
+
+
+# Acceso al atributo de pesos de los 
+# vínculos
+
+
+# Otra forma de acceder al atributo de pesos de 
+# los vínculos
+
+
+# Tabla del atributo
+
+
+# Medidas de distribución del atributo 
+
+
+# Acceso a los cinco primeros vínculos 
+# y sus atributos
+
+
+```
+
+¡Tu turno!
+
+Inspecciona la siguiente red de profesores 
+de una universidad en Inglaterra
+
+```{r}
+
+# Cargando los datos
+data("UKfaculty")
+
+UKfaculty
+
+# 1)	¿Cuántos vértices tiene la red?
+
+# 2)	¿Cuántos vínculos tiene la red?
+
+# 3)	¿La red es dirigida o no dirigida? 
+
+# 4)	Reemplaza los espacios "___" para 
+# determinar el rango de los pesos de vínculos
+
+summary(E(UKfaculty)$___)
+
+```
+
+9. Visualización de redes
+
+Opción 1: Mediante atributos
+
+Generalmente utilizamos esta opción para configurar el color, forma y etiqueta
+
+```{r}
+
+# Quitando los márgenes
+
+
+# Gráfica básica
+
+
+# Inspección de los atributos
+
+
+# Tabla del atributo color
+
+
+# Gráfica básica 
+
+
+# Inspección de los atributos
+
+
+# Ejemplo: estableciendo la forma de los vértices
+#como atributo
+
+# Constatando que el atributo fue creado
+# correctamente 
+
+
+# Gráfica básica configurando la forma
+# de los vértices
+
+
+```
+
+Opción 2: Mediante la función plot()
+
+Utilizando los argumentos de la función
+
+```{r}
+
+# Gráfica configurando el color mediante un número
+
+# Gráfica configurando el color mediante su nombre
+
+
+# Gráfica configurando el color mediante su 
+# código hex
+
+
+# Gráfica configurando el color invocando un 
+# atributo
+
+
+# Gráfica con varias configuraciones
+plot(karate, 
+     # === propiedades de los vértices 
+     vertex.color = "#4c4ef4",
+     vertex.frame.color = "#4c4ef4",
+     vertex.size = 15,
+     vertex.shape = "circle",
+     # === propiedades de las etiquetas de los
+     #vértices
+     vertex.label.cex = 0.5,
+     vertex.label.color = "white",
+     vertex.label.family = "Helvetica",
+     # === propiedades de los vínculos
+     edge.color = "gray",
+     edge.width = E(karate)$weight)
+```
+
+¡Tu turno!
+
+```{r}
+
+# 1.	Utiliza la información de la diapositiva
+# y la hoja de repaso de visualización 
+# para que los vínculos sean del color 
+# de tu elección. 
+
+plot(karate, 
+     edge.color = "___")
+
+# 2.	¿Qué fragmento del siguiente código
+# hace que las etiquetas desaparezcan?
+
+plot(karate, 
+     vertex.color = "#4c4ef4",
+     vertex.frame.color = "#4c4ef4",
+     vertex.size = 15,
+     vertex.shape = "circle",
+     vertex.label = NA,
+     edge.color = "gray")
+
+# 3.	Cambia la gráfica para que el ancho de los vínculos sea igual al atributo “weight” o peso de los vínculos.  
+
+plot(karate, 
+     vertex.color = "#4c4ef4",
+     vertex.frame.color = "#4c4ef4",
+     vertex.size = 15,
+     vertex.shape = "circle",
+     vertex.label = NA,
+     edge.width = E(karate)$___,
+     edge.color = "gray")
+
+# 4.	Cambia el código para que los vínculos sean representados por líneas punteadas 
+plot(karate, 
+     vertex.color = "#4c4ef4",
+     vertex.frame.color = "#4c4ef4",
+     vertex.size = 15,
+     vertex.shape = "circle",
+     vertex.label = NA,
+     edge.lty = ___,
+     edge.color = "gray")
+
+```
+
+10. Métricas globales
+
+```{r}
+
+# Densidad
+
+
+# Transitividad 
+
+
+```
+
+¡Tu turno!
+
+```{r}
+
+
+ # 1) Calcula la densidad y transitividad de la red de profesores en Inglaterra
+
+graph.density(___)
+
+transitivity(___)
+
+ # 2)  Compara la densidad y transitividad en la red del club de karate con las métricas obtenidas en la red de profesores
+
+```
+
+
+11. Centralidad 
+
+```{r}
+
+# Centralidad de grado
+
+
+# Centralidad de grado ordenada 
+
+
+# Creando un atributo de los vértices que
+# contenga su grado
+
+
+# Creando una gráfica en la que el tamaño de 
+# los vértices esté dado por su grado 
+
+
+```
+
+12. Puntos de articulación
+
+```{r}
+
+# Detección de puntos de articulación
+
+
+```
+
